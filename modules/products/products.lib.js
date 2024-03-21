@@ -8,7 +8,7 @@ const GetProductList = async (data) => {
 
     } catch (e) {
         console.log("Err ProductSave: ", e);
-        return e;
+        throw new Error(e);
     }
 }
 
@@ -20,8 +20,7 @@ const ProductSave = async (data) => {
         return saveObj;
 
     } catch (e) {
-        console.log("Err ProductSave: ", e);
-        return e;
+        throw new Error(e);
     }
 }
 

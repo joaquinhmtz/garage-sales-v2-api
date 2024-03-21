@@ -11,13 +11,14 @@ const GetProductList = async (req, res) => {
 
     } catch (e) {
         console.log("Error - GetProductList: ", e);
-        res.status(500).json({ message: e.toString() });
+        res.status(500).json({ msg: e.toString() });
     }
 }
 
 const SaveProduct = async (req, res) => {
     try {
         let data = req.body;
+        data["photos"] = [];
         data["type"] = "products";
         data["prefix"] = "P";
         data["folio"] = await CounterUtils.IncrementCounter(data);
@@ -27,7 +28,7 @@ const SaveProduct = async (req, res) => {
 
     } catch (e) {
         console.log("Error - SaveProduct: ", e);
-        res.status(500).json({ message: e.toString() });
+        res.status(500).json({ msg: e.toString(), status: 500, success: false });
     }
 }
 

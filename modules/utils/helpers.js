@@ -17,7 +17,7 @@ const IncrementCounter = async (data) => {
 }
 
 const CreateObjectId = (id) => {
-    return mongoose.Types.ObjectId(id);
+    return new mongoose.Types.ObjectId(id);
 }
 
 module.exports.IncrementCounter = IncrementCounter;

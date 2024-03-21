@@ -1,4 +1,5 @@
 let ProductScheme = require("./../models/products.scheme");
+let GlobalUtils = require("./../utils/helpers");
 
 const GetProductList = async (data) => {
     try {
@@ -24,5 +25,17 @@ const ProductSave = async (data) => {
     }
 }
 
+const DeleteProduct = async (data) => {
+    try {
+        let dlt = await ProductScheme.deleteOne({ _id : GlobalUtils.CreateObjectId(data._id) });
+
+        return dlt;
+
+    } catch (e) {
+        throw new Error(e);
+    }
+}
+
 module.exports.ProductSave = ProductSave;
 module.exports.GetProductList = GetProductList;
+module.exports.DeleteProduct = DeleteProduct;

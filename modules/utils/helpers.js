@@ -1,4 +1,5 @@
 let CounterScheme = require("./../models/counters.scheme");
+let mongoose = require("mongoose");
 
 const IncrementCounter = async (data) => {
     let endFolio = '';
@@ -15,4 +16,9 @@ const IncrementCounter = async (data) => {
 
 }
 
+const CreateObjectId = (id) => {
+    return mongoose.Types.ObjectId(id);
+}
+
 module.exports.IncrementCounter = IncrementCounter;
+module.exports.CreateObjectId = CreateObjectId;

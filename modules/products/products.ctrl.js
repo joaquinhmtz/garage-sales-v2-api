@@ -32,5 +32,19 @@ const SaveProduct = async (req, res) => {
     }
 }
 
+const DeleteProduct = async (req, res) => {
+    try {
+        let data = req.body;
+        let dlt = await ProductsLib.DeleteProduct(data);
+
+        res.status(200).send({ success: true, msg: "El producto se elimino correctamente" });
+
+    } catch (e) {
+        console.log("Error - DeleteProduct: ", e);
+        res.status(500).json({ msg: e.toString(), status: 500, success: false });
+    }
+}
+
 module.exports.GetProductList = GetProductList;
 module.exports.SaveProduct = SaveProduct;
+module.exports.DeleteProduct = DeleteProduct;
